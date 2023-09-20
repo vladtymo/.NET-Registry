@@ -33,67 +33,63 @@ namespace _01_reg
     {
         static void Main(string[] args)
         {
-            //RegistryKey key = Registry.CurrentUser;
+            RegistryKey currentUserKey = Registry.CurrentUser;
 
-            ///////Create key
-            //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.CreateSubKey("Inner Key");
-            //helloKey.SetValue("login", "Bob19");
-            //helloKey.SetValue("password", "12345");
-            //helloKey.Close();
+            /////Create key
+            RegistryKey helloKey = currentUserKey.CreateSubKey("Inner Key");
+            helloKey.SetValue("login", "Bob19");
+            helloKey.SetValue("password", "12345");
+            helloKey.Close();
 
-            ///Create subkey
-            //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key", true);
-            //RegistryKey subHelloKey = helloKey.CreateSubKey("SubKey");
-            //subHelloKey.SetValue("value2", "777", RegistryValueKind.DWord);
-            //subHelloKey.Close();
-            //helloKey.Close();
+            // Create subkey
+            /*RegistryKey */ helloKey = currentUserKey.OpenSubKey("Inner Key", true);
+            RegistryKey subHelloKey = helloKey.CreateSubKey("SubKey");
+            subHelloKey.SetValue("value2", "777", RegistryValueKind.DWord);
+            subHelloKey.Close();
+            helloKey.Close();
 
             // short syntax
-            //Registry.CurrentUser
-            //        .OpenSubKey("Inner Key", true)
-            //        .OpenSubKey("SubKey", true)
-            //        .SetValue("value2", "888", RegistryValueKind.DWord);
+            Registry.CurrentUser
+                    .OpenSubKey("Inner Key", true)
+                    .OpenSubKey("SubKey", true)
+                    .SetValue("value2", "888", RegistryValueKind.DWord);
 
-            /////////Read data
-            //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key");
+            ///////Read data
+            /*RegistryKey*/ helloKey = currentUserKey.OpenSubKey("Inner Key");
 
-            //string login = helloKey.GetValue("login").ToString();
-            //string password = helloKey.GetValue("password").ToString();
-            //helloKey.Close();
+            string login = helloKey.GetValue("login").ToString();
+            string password = helloKey.GetValue("password").ToString();
+            helloKey.Close();
 
-            //Console.WriteLine(login);
-            //Console.WriteLine(password);
+            Console.WriteLine(login);
+            Console.WriteLine(password);
 
-            /////////////Delete value and key
-            //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key", true);
+            ///////////Delete value and key
+            /*RegistryKey*/ helloKey = currentUserKey.OpenSubKey("Inner Key", true);
 
-            //Console.ReadKey();
-            //// delete sub key
-            //helloKey.DeleteSubKey("SubKey");
+            Console.ReadKey();
+            // delete sub key
+            helloKey.DeleteSubKey("SubKey");
 
-            //Console.ReadKey();
-            //// delete key value
-            //helloKey.DeleteValue("login");
-            //helloKey.Close();
+            Console.ReadKey();
+            // delete key value
+            helloKey.DeleteValue("login");
+            helloKey.Close();
 
-            //Console.ReadKey();
-            //// delete key
-            //currentUserKey.DeleteSubKey("Inner Key");
+            Console.ReadKey();
+            // delete key
+            currentUserKey.DeleteSubKey("Inner Key");
 
-            /////////////////Get system theme
-            //int res = (int)Registry.GetValue(
-            //    @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
-            //    "AppsUseLightTheme", null);
+            ///////////////Get system theme
+            int res = (int)Registry.GetValue(
+                @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
+                "AppsUseLightTheme", null);
 
-            //Console.WriteLine("UseLightTheme: " + res);
+            Console.WriteLine("UseLightTheme: " + res);
 
-            //Registry.SetValue(
-            //    @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
-            //    "AppsUseLightTheme", 0);
+            Registry.SetValue(
+                @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
+                "AppsUseLightTheme", 0);
         }
     }
 }
