@@ -35,16 +35,16 @@ namespace _01_reg
         {
             //RegistryKey key = Registry.CurrentUser;
 
-            /////////Create key
+            ///////Create key
             //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.CreateSubKey("NewKey");
+            //RegistryKey helloKey = currentUserKey.CreateSubKey("Inner Key");
             //helloKey.SetValue("login", "Bob19");
             //helloKey.SetValue("password", "12345");
             //helloKey.Close();
 
             ///Create subkey
             //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("NewKey", true);
+            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key", true);
             //RegistryKey subHelloKey = helloKey.CreateSubKey("SubKey");
             //subHelloKey.SetValue("value2", "777", RegistryValueKind.DWord);
             //subHelloKey.Close();
@@ -52,13 +52,13 @@ namespace _01_reg
 
             // short syntax
             //Registry.CurrentUser
-            //        .OpenSubKey("NewKey", true)
+            //        .OpenSubKey("Inner Key", true)
             //        .OpenSubKey("SubKey", true)
             //        .SetValue("value2", "888", RegistryValueKind.DWord);
 
             /////////Read data
             //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("NewKey");
+            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key");
 
             //string login = helloKey.GetValue("login").ToString();
             //string password = helloKey.GetValue("password").ToString();
@@ -69,7 +69,7 @@ namespace _01_reg
 
             /////////////Delete value and key
             //RegistryKey currentUserKey = Registry.CurrentUser;
-            //RegistryKey helloKey = currentUserKey.OpenSubKey("NewKey", true);
+            //RegistryKey helloKey = currentUserKey.OpenSubKey("Inner Key", true);
 
             //Console.ReadKey();
             //// delete sub key
@@ -82,17 +82,18 @@ namespace _01_reg
 
             //Console.ReadKey();
             //// delete key
-            //currentUserKey.DeleteSubKey("NewKey");
+            //currentUserKey.DeleteSubKey("Inner Key");
 
             /////////////////Get system theme
             //int res = (int)Registry.GetValue(
             //    @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
             //    "AppsUseLightTheme", null);
+
             //Console.WriteLine("UseLightTheme: " + res);
 
-            Registry.SetValue(
-                @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
-                "AppsUseLightTheme", 0);
+            //Registry.SetValue(
+            //    @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize",
+            //    "AppsUseLightTheme", 0);
         }
     }
 }

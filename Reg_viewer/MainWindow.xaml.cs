@@ -96,7 +96,7 @@ namespace Reg_viewer
             {
                 LoadSubKeys(sub);
             }
-        }
+        }   
 
         private void Tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
