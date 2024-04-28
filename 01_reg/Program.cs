@@ -40,6 +40,7 @@ namespace _01_reg
             helloKey.SetValue("login", "Bob19");
             helloKey.SetValue("password", "12345");
             helloKey.Close();
+            Console.ReadKey();
 
             // Create subkey
             /*RegistryKey */ helloKey = currentUserKey.OpenSubKey("Inner Key", true);
@@ -47,15 +48,18 @@ namespace _01_reg
             subHelloKey.SetValue("value2", "777", RegistryValueKind.DWord);
             subHelloKey.Close();
             helloKey.Close();
+            Console.ReadKey();
 
             // short syntax
             Registry.CurrentUser
                     .OpenSubKey("Inner Key", true)
                     .OpenSubKey("SubKey", true)
                     .SetValue("value2", "888", RegistryValueKind.DWord);
+            Console.ReadKey();
 
             ///////Read data
-            /*RegistryKey*/ helloKey = currentUserKey.OpenSubKey("Inner Key");
+            /*RegistryKey*/
+            helloKey = currentUserKey.OpenSubKey("Inner Key");
 
             string login = helloKey.GetValue("login").ToString();
             string password = helloKey.GetValue("password").ToString();
@@ -63,9 +67,11 @@ namespace _01_reg
 
             Console.WriteLine(login);
             Console.WriteLine(password);
+            Console.ReadKey();
 
             ///////////Delete value and key
-            /*RegistryKey*/ helloKey = currentUserKey.OpenSubKey("Inner Key", true);
+            /*RegistryKey*/
+            helloKey = currentUserKey.OpenSubKey("Inner Key", true);
 
             Console.ReadKey();
             // delete sub key
@@ -79,6 +85,7 @@ namespace _01_reg
             Console.ReadKey();
             // delete key
             currentUserKey.DeleteSubKey("Inner Key");
+            Console.ReadKey();
 
             ///////////////Get system theme
             int res = (int)Registry.GetValue(
